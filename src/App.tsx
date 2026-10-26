@@ -14,7 +14,8 @@ import EventsPage from './pages/EventsPage'
 import GivingPage from './pages/GivingPage'
 import ContactPage from './pages/ContactPage'
 import CCALogo from './components/CCALogo'
-
+import LiveSearch from './components/LiveSearch'
+import type { SearchItem } from './components/LiveSearch'
 /* =========================================================
    TYPES
 ========================================================= */
@@ -429,6 +430,109 @@ const ministries: Ministry[] = [
 ]
 
 /* =========================================================
+   LIVE SEARCH INDEX
+========================================================= */
+
+const searchItems: SearchItem[] = [
+  // Main website pages
+  {
+    title: 'Home',
+    category: 'Page',
+    description: 'Visit the CCA Eldoret Area homepage.',
+    href: '/',
+  },
+  {
+    title: 'About Us',
+    category: 'Page',
+    description: 'Learn about our faith, heritage, mission and vision.',
+    href: '/about',
+  },
+  {
+    title: 'Leadership',
+    category: 'Page',
+    description: 'Meet the leadership serving the Eldoret Area.',
+    href: '/leadership',
+  },
+  {
+    title: 'Events',
+    category: 'Page',
+    description: 'Explore church events, worship and fellowship.',
+    href: '/events',
+  },
+  {
+    title: 'Media Centre',
+    category: 'Page',
+    description: 'Explore sermons, photographs and church videos.',
+    href: '/media',
+  },
+  {
+    title: 'Giving',
+    category: 'Page',
+    description: 'Find information about supporting church ministry.',
+    href: '/give',
+  },
+  {
+    title: 'Contact Us',
+    category: 'Page',
+    description: 'Get in touch with the CCA Eldoret Area.',
+    href: '/contact',
+  },
+
+  // Website sections
+  {
+    title: 'Our Churches',
+    category: 'Section',
+    description: 'Find one of our five churches and its pastorate.',
+    href: '/#churches',
+  },
+  {
+    title: 'Ministries',
+    category: 'Section',
+    description: 'Discover ways to worship, serve and get involved.',
+    href: '/#ministries',
+  },
+
+  // All five churches
+  ...churches.map((church) => ({
+    title: church.name,
+    category: 'Church',
+    description: `${church.location} · ${church.pastorate}`,
+    href: `/churches/${church.slug}`,
+  })),
+
+  // Leaders
+  ...leaders.map((leader) => ({
+    title: leader.name,
+    category: `Leader · ${leader.role}`,
+    description: leader.description,
+    href: '/leadership',
+  })),
+
+  // Ministries
+  ...ministries.map((ministry) => ({
+    title: ministry.title,
+    category: 'Ministry',
+    description: ministry.description,
+    href: '/#ministries',
+  })),
+
+  // Pastorates
+  {
+    title: 'Kipkaren Pastorate',
+    category: 'Pastorate',
+    description: 'Includes Kipkaren Church and Mwangaza Church.',
+    href: '/#churches',
+  },
+  {
+    title: "King'ong'o Pastorate",
+    category: 'Pastorate',
+    description: "Includes Majengo, King'ong'o and Turbo churches.",
+    href: '/#churches',
+  },
+]
+
+
+/* =========================================================
    WELCOME POPUP
 ========================================================= */
 
@@ -455,7 +559,7 @@ function WelcomePopup() {
     // Automatically close the popup after 6 seconds
     const timer = window.setTimeout(() => {
       setVisible(false)
-    }, 6000)
+    }, 7000)
 
     return () => window.clearTimeout(timer)
   }, [visible])
@@ -580,6 +684,7 @@ function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-5 lg:flex">
+          <LiveSearch items={searchItems} />
           {links.map(([label, href]) =>
             href.startsWith('/#') ? (
               <a
@@ -637,6 +742,9 @@ function Navbar() {
       {open && (
         <div className="border-t border-slate-100 bg-white px-5 pb-5 lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col">
+            <div className="py-4">
+              <LiveSearch items={searchItems} />
+            </div>
             {links.map(([label, href]) =>
               href.startsWith('/#') ? (
                 <a
