@@ -1,0 +1,472 @@
+@import "tailwindcss";
+
+/* =========================================================
+   CCA CHURCH ELDORET AREA
+   GLOBAL DESIGN SYSTEM
+========================================================= */
+
+:root {
+  --cca-pink: #d81b60;
+  --cca-pink-dark: #b71550;
+  --cca-blue: #123b63;
+  --cca-blue-dark: #071a2d;
+  --cca-blue-soft: #0c2944;
+  --cca-white: #ffffff;
+  --cca-soft-white: #f7f7f5;
+  --cca-gold: #c9a227;
+  --cca-charcoal: #202124;
+
+  font-family: "DM Sans", sans-serif;
+  color: var(--cca-charcoal);
+  background: var(--cca-white);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--cca-white);
+  color: var(--cca-charcoal);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: "DM Sans", sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(216, 27, 96, 0.35);
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--cca-pink);
+  color: var(--cca-white);
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.heading-font {
+  font-family: "Playfair Display", serif;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: pretty;
+}
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eef2f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cca-blue);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cca-pink);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cca-blue) #eef2f5;
+}
+
+/* =========================================================
+   SMOOTH INTERACTION
+========================================================= */
+
+a,
+button,
+article,
+img {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================================
+   WELCOME POPUP TIMER
+========================================================= */
+
+@keyframes welcomeTimer {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* =========================================================
+   FLOATING ANIMATION
+========================================================= */
+
+@keyframes ccaFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.cca-float {
+  animation: ccaFloat 5s ease-in-out infinite;
+}
+
+/* =========================================================
+   SOFT PULSE
+========================================================= */
+
+@keyframes ccaPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.cca-pulse {
+  animation: ccaPulse 3s ease-in-out infinite;
+}
+
+/* =========================================================
+   FADE UP
+========================================================= */
+
+@keyframes ccaFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cca-fade-up {
+  animation: ccaFadeUp 0.8s ease-out both;
+}
+
+/* =========================================================
+   GRADIENT TEXT
+========================================================= */
+
+.cca-gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--cca-pink),
+    #f04f88,
+    var(--cca-gold)
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================
+   GLASS EFFECT
+========================================================= */
+
+.cca-glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* =========================================================
+   PREMIUM CARD
+========================================================= */
+
+.cca-card {
+  background: var(--cca-white);
+  border: 1px solid rgba(18, 59, 99, 0.08);
+  box-shadow:
+    0 10px 30px rgba(18, 59, 99, 0.06),
+    0 2px 8px rgba(18, 59, 99, 0.04);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.cca-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(216, 27, 96, 0.15);
+
+  box-shadow:
+    0 25px 50px rgba(18, 59, 99, 0.1),
+    0 8px 20px rgba(216, 27, 96, 0.06);
+}
+
+/* =========================================================
+   IMAGE POLISH
+========================================================= */
+
+.cca-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cca-image-contain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =========================================================
+   IMAGE SHINE EFFECT
+========================================================= */
+
+.cca-image-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.cca-image-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-110%);
+
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.14) 45%,
+    transparent 70%
+  );
+
+  transition: transform 0.8s ease;
+  pointer-events: none;
+}
+
+.cca-image-shine:hover::after {
+  transform: translateX(110%);
+}
+
+/* =========================================================
+   SECTION BACKGROUND
+========================================================= */
+
+.cca-soft-section {
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(216, 27, 96, 0.04),
+      transparent 30%
+    ),
+    var(--cca-soft-white);
+}
+
+/* =========================================================
+   DECORATIVE LINE
+========================================================= */
+
+.cca-line {
+  width: 55px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--cca-pink);
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.cca-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 46px;
+  padding: 0.75rem 1.5rem;
+
+  border: none;
+  border-radius: 999px;
+
+  background: var(--cca-pink);
+  color: white;
+
+  font-weight: 700;
+
+  box-shadow: 0 10px 25px rgba(216, 27, 96, 0.2);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.cca-button-primary:hover {
+  background: var(--cca-pink-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(216, 27, 96, 0.25);
+}
+
+.cca-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 46px;
+  padding: 0.75rem 1.5rem;
+
+  border: 1px solid rgba(18, 59, 99, 0.25);
+  border-radius: 999px;
+
+  background: white;
+  color: var(--cca-blue);
+
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.cca-button-secondary:hover {
+  background: var(--cca-blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* =========================================================
+   MOBILE OPTIMIZATION
+========================================================= */
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 75px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .heading-font {
+    letter-spacing: -0.015em;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  nav,
+  button {
+    display: none !important;
+  }
+}
